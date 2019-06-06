@@ -4,7 +4,6 @@ import java.awt.Graphics;
 import games.basic.gameObjects.RectangularGameObject;
 import games.basic.position.interfaces.Positionable;
 
-
 public class Ship extends AbstractMoveableGameObject {
 
 	private int size;
@@ -44,7 +43,6 @@ public class Ship extends AbstractMoveableGameObject {
 		else
 			return this.size;
 	}
-
 	
 	public String toString() {
 		// verwende toString-Methode aus Positionable

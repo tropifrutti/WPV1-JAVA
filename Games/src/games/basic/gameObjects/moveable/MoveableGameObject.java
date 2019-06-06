@@ -1,4 +1,6 @@
 package games.basic.gameObjects.moveable;
+import java.awt.Graphics;
+
 import games.basic.gameObjects.RectangularGameObject;
 import games.basic.position.interfaces.Positionable;
 
@@ -54,5 +56,12 @@ public class MoveableGameObject extends AbstractMoveableGameObject {
 				&& this.getHeight() == otherMoveable.getHeight()
 				// vergleiche Bewegungsvektor
 				&& this.getDeltaPos().equals( otherMoveable.getDeltaPos() );
+	}
+
+
+	@Override
+	public void paintComponent(Graphics g) {
+		// TODO Auto-generated method stub
+		
 	}
 }

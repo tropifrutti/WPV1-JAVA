@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -24,11 +25,17 @@ public class TicPanel extends JPanel implements MouseListener {
 	ArrayList<GameObject> liste;
 	JFrame frame;
 	boolean kreis;
+	
+	List<String> cells;
 
 	public TicPanel(ArrayList<GameObject> liste2) {
 		this.liste = liste2;
 		addMouseListener(this);
 		this.kreis = false;
+		this.cells = new ArrayList<String>();
+		for (int i=0; i<=8; i++) {
+			this.cells.set(i, "");
+		}
 	}
 
 	public TicPanel(ArrayList<GameObject> liste, JFrame frame) {
@@ -36,6 +43,10 @@ public class TicPanel extends JPanel implements MouseListener {
 		this.frame = frame;
 		addMouseListener(this);
 		this.kreis = false;
+		this.cells = new ArrayList<String>();
+		for (int i=0; i<=8; i++) {
+			this.cells.set(i, "");
+		}
 		
 	}
 
@@ -54,6 +65,20 @@ public class TicPanel extends JPanel implements MouseListener {
 		}
 		
 		frame.repaint();
+		
+		if (win()=="kreis") {
+			JOptionPane.showMessageDialog(null, "Glückwunsh! Kreis hat gewonnen!");
+			liste.clear();
+		}
+		
+		if (liste.size()==9) {
+			JOptionPane.showMessageDialog(null, "Niemand hat gewonnen");
+			liste.clear();
+		}
+		
+	
+		
+		
 	}
 	
 	@Override
@@ -77,6 +102,11 @@ public class TicPanel extends JPanel implements MouseListener {
 		
 		//Um die Buttons genrisch zu zeichnen
 		
+		
+	}
+	
+	public String win() {
+		return "";
 		
 	}
 

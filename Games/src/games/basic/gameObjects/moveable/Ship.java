@@ -1,4 +1,6 @@
 package games.basic.gameObjects.moveable;
+import java.awt.Graphics;
+
 import games.basic.gameObjects.RectangularGameObject;
 import games.basic.position.interfaces.Positionable;
 
@@ -70,5 +72,12 @@ public class Ship extends AbstractMoveableGameObject {
 				&& this.isHorizontal == otherShip.isHorizontal
 				// vergleiche Bewegungsvektor
 				&& this.getDeltaPos().equals( otherShip.getDeltaPos() );
+	}
+
+
+	@Override
+	public void paintComponent(Graphics g) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -7,7 +7,9 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -26,16 +28,14 @@ public class TicPanel extends JPanel implements MouseListener {
 	JFrame frame;
 	boolean kreis;
 	
-	List<String> cells;
+	Map<String, String> cells;
 
 	public TicPanel(ArrayList<GameObject> liste2) {
 		this.liste = liste2;
 		addMouseListener(this);
 		this.kreis = false;
-		this.cells = new ArrayList<String>();
-		for (int i=0; i<=8; i++) {
-			this.cells.set(i, "");
-		}
+		this.cells = new HashMap<String, String>();
+		
 	}
 
 	public TicPanel(ArrayList<GameObject> liste, JFrame frame) {
@@ -43,37 +43,49 @@ public class TicPanel extends JPanel implements MouseListener {
 		this.frame = frame;
 		addMouseListener(this);
 		this.kreis = false;
-		this.cells = new ArrayList<String>();
-		for (int i=0; i<=8; i++) {
-			this.cells.set(i, "");
-		}
-		
+		this.cells = new HashMap<String, String>();
+
 	}
 
 	public void mouseClicked(MouseEvent event) {
 		int x = (int) event.getPoint().getX() / (this.getWidth()/3);
 		int y = (int) event.getPoint().getY() / (this.getHeight()/3);
-		//String str = "x:" + x  + ", y:" + y;
+		String key = ""+ x + "," + y;
 		//JOptionPane.showMessageDialog(null, str);
 		
-		if (kreis) {
-			liste.add(new CircularGameObject(new Position((this.getX()+this.getWidth()*x/3)+10, (this.getY()+this.getHeight()*y/3)+10), (this.getWidth()/3)-20));
-			kreis = false;
-		} else {
-			liste.add(new CrossGameObject(new Position((this.getX()+this.getWidth()*x/3)+10, (this.getY()+this.getHeight()*y/3)+10), (this.getWidth()/3)-20, (this.getHeight()/3)-20));
-			kreis = true;
+		if (!cells.containsKey(key)) { //key existiert nicht 
+			if (kreis) {
+				liste.add(new CircularGameObject(new Position((this.getX()+this.getWidth()*x/3)+10, (this.getY()+this.getHeight()*y/3)+10), (this.getWidth()/3)-20));
+				cells.put(key, "kreis");
+				kreis = false;
+			} else {
+				liste.add(new CrossGameObject(new Position((this.getX()+this.getWidth()*x/3)+10, (this.getY()+this.getHeight()*y/3)+10), (this.getWidth()/3)-20, (this.getHeight()/3)-20));
+				cells.put(key, "kreuz");
+				kreis = true;
+			}
 		}
 		
+	
 		frame.repaint();
 		
-		if (win()=="kreis") {
-			JOptionPane.showMessageDialog(null, "Glückwunsh! Kreis hat gewonnen!");
+		if (win(x,y)) {
+			String message = "Glückwunsh! Kreis hat gewonnen!";
+			if (kreis) {
+				message = "Glückwunsh! Kreuz hat gewonnen!";
+			} 
+			
+			JOptionPane.showMessageDialog(null, message);
 			liste.clear();
+			cells.clear();
+			frame.repaint();
+			
 		}
 		
 		if (liste.size()==9) {
 			JOptionPane.showMessageDialog(null, "Niemand hat gewonnen");
 			liste.clear();
+			cells.clear();
+			frame.repaint();
 		}
 		
 	
@@ -105,10 +117,41 @@ public class TicPanel extends JPanel implements MouseListener {
 		
 	}
 	
-	public String win() {
-		return "";
+	private boolean checkRowCol (String a1, String a2, String a3) {
+		return (a1 == a2 && a2 == a3);
+	}
+	
+	private boolean checkRowForWin (int Zeile) {
+		for(int i=0; i<3-2; i++) {
+			if (checkRowCol(cells.get(String.format("%d,%d", Zeile, i)), cells.get(String.format("%d,%d", Zeile, i+1)), cells.get(String.format("%d,%d", Zeile, i+2)))) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private boolean checkColForWin (int Spalte) {
+		for(int i=0; i<3-2; i++) {
+			if (checkRowCol(cells.get(String.format("%d,%d", i, Spalte)), cells.get(String.format("%d,%d", i+1, Spalte)), cells.get(String.format("%d,%d", i+2, Spalte)))) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
+	public boolean win(int x, int y) {
+		 
+		
+	
+		return (checkRowForWin(x) || (checkColForWin(y)));
+		
 		
 	}
+	
+	
+	
+	
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {

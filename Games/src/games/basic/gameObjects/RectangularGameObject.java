@@ -1,4 +1,5 @@
 package games.basic.gameObjects;
+
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -6,13 +7,11 @@ import java.awt.Graphics2D;
 
 import games.basic.position.interfaces.Positionable;
 
-
 public class RectangularGameObject extends AbstractGameObject {
 
 	private int width;
 	private int height;
-	
-	
+		
 	// Konstruktor
 	// Beachte: Parameter Positionable 'pos' fehlte im Aufgabenblatt
 	public RectangularGameObject(Positionable pos, int width, int height) {
@@ -22,8 +21,6 @@ public class RectangularGameObject extends AbstractGameObject {
 		this.height = height;
 	}
 	
-	
-
 	@Override
 	public int getWidth() {
 		return this.width;
@@ -33,7 +30,6 @@ public class RectangularGameObject extends AbstractGameObject {
 	public int getHeight() {
 		return this.height;
 	}
-
 	
 	public String toString() {
 		// verwende toString-Methode aus Positionable
@@ -65,9 +61,6 @@ public class RectangularGameObject extends AbstractGameObject {
 		Graphics2D g2d = (Graphics2D)g;
 		g2d.setStroke(new BasicStroke(4.5f));
 		g.setColor(Color.black);
-		g.drawRect(this.getPos().getX(), this.getPos().getY(), width, height);
-		
+		g.drawRect(this.getPos().getX(), this.getPos().getY(), width, height);		
 	}
-	
-	
 }

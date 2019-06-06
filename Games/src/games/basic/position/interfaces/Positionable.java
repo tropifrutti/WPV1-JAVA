@@ -22,4 +22,3 @@ public interface Positionable {
 	public abstract String toString();
 	public abstract boolean equals(Object other);
 }
-

@@ -1,6 +1,6 @@
 package games.basic.gameObjects.interfaces;
-import games.basic.position.interfaces.Positionable;
 
+import games.basic.position.interfaces.Positionable;
 
 public interface Moveable {
 
@@ -11,6 +11,5 @@ public interface Moveable {
 	
 	void reverseXDirection();
 	void reverseYDirection();
-	void reverseDirection();
-	
+	void reverseDirection();	
 }

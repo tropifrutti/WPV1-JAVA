@@ -1,8 +1,8 @@
 package games.basic.gameObjects;
+
 import games.basic.gameObjects.interfaces.GameObject;
 import games.basic.position.Position;
 import games.basic.position.interfaces.Positionable;
-
 
 public abstract class AbstractGameObject implements GameObject {
 
@@ -62,7 +62,6 @@ public abstract class AbstractGameObject implements GameObject {
 			return true;
 		}
 	}
-
 	
 	// Beachte: Da alle abgeleiteten Klassen sinnvollerweise eine Position haben, 
 	//		    können wir Position auch als Attribut hier definieren und damit 
@@ -99,8 +98,7 @@ public abstract class AbstractGameObject implements GameObject {
 	@Override
 	public void setY(int y) {
 		this.pos.setY( y );
-	}
-	
+	}	
 	
 	// noch abstract: getHeight(), getWidth()
 

@@ -7,7 +7,6 @@ import java.awt.Graphics2D;
 
 import games.basic.position.interfaces.Positionable;
 
-
 public class CrossGameObject extends AbstractGameObject {
 	
 	private int width;
@@ -63,10 +62,5 @@ public class CrossGameObject extends AbstractGameObject {
 		//g.drawRect(this.getPos().getX(), this.getPos().getY(), width, height);
 		g.drawLine(this.getPos().getX(), this.getPos().getY(), this.getPos().getX()+width, this.getPos().getY()+width);
 		g.drawLine(this.getPos().getX()+width, this.getPos().getY(), this.getPos().getX(), this.getPos().getY()+width);
-
 	}
-	
-	
-	
-	
 }

@@ -17,7 +17,6 @@ public class Ship extends AbstractMoveableGameObject {
 		this.isHorizontal = isHorizontal;
 	}
 	
-	
 	// get-Methoden
 	public int getSize() {
 		return this.size;
@@ -71,7 +70,6 @@ public class Ship extends AbstractMoveableGameObject {
 				// vergleiche Bewegungsvektor
 				&& this.getDeltaPos().equals( otherShip.getDeltaPos() );
 	}
-
 
 	@Override
 	public void paintComponent(Graphics g) {

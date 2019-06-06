@@ -1,8 +1,8 @@
 package games.basic.gameObjects.moveable;
+
 import games.basic.gameObjects.AbstractGameObject;
 import games.basic.gameObjects.interfaces.Moveable;
 import games.basic.position.interfaces.Positionable;
-
 
 public abstract class AbstractMoveableGameObject extends AbstractGameObject implements
 		Moveable {
@@ -16,8 +16,7 @@ public abstract class AbstractMoveableGameObject extends AbstractGameObject impl
 		super(pos);		// Aufruf: AbstractGameObject(pos);
 		this.setDeltaPos(deltaPos);
 	}
-	
-	
+		
 	@Override
 	public Positionable getDeltaPos() {
 		return this.deltaPos;
@@ -27,7 +26,6 @@ public abstract class AbstractMoveableGameObject extends AbstractGameObject impl
 	public void setDeltaPos(Positionable deltaPos) {
 		this.deltaPos = deltaPos;
 	}
-
 	
 	@Override
 	public void move() {
@@ -37,7 +35,6 @@ public abstract class AbstractMoveableGameObject extends AbstractGameObject impl
 		// Setze Position auf (newX, newY): 
 		//		verwende hinzugefügte Methode setPos von SimpleGameObject
 		this.setPos( newX, newY );
-
 	}
 
 	@Override

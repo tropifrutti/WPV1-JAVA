@@ -1,9 +1,9 @@
 package games.basic.gameObjects.moveable;
+
 import java.awt.Graphics;
 
 import games.basic.gameObjects.RectangularGameObject;
 import games.basic.position.interfaces.Positionable;
-
 
 public class MoveableGameObject extends AbstractMoveableGameObject {
 
@@ -17,8 +17,7 @@ public class MoveableGameObject extends AbstractMoveableGameObject {
 		this.width  = width;
 		this.height = height;
 	}
-	
-	
+		
 	@Override
 	public int getWidth() {
 		return this.width;
@@ -28,7 +27,6 @@ public class MoveableGameObject extends AbstractMoveableGameObject {
 	public int getHeight() {
 		return this.height;
 	}
-
 	
 	public String toString() {
 		// verwende toString-Methode aus Positionable
@@ -57,7 +55,6 @@ public class MoveableGameObject extends AbstractMoveableGameObject {
 				// vergleiche Bewegungsvektor
 				&& this.getDeltaPos().equals( otherMoveable.getDeltaPos() );
 	}
-
 
 	@Override
 	public void paintComponent(Graphics g) {

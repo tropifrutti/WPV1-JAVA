@@ -22,9 +22,6 @@ import games.basic.gameObjects.interfaces.GameObject;
 import games.basic.position.Position;
 
 public class TicTacToe {
-	
-	
-		
 
 	public static void main(String[] args) {
 		
@@ -61,7 +58,6 @@ public class TicTacToe {
 		frame.setSize(420, 480);
 		frame.setVisible(true);
 		
-		
 		//liste.add(new CircularGameObject(new Position((drawPanel.getX()+drawPanel.getWidth()*2/3)+10, drawPanel.getY()+10), (drawPanel.getWidth()/3)-20));
 		//liste.add(new CrossGameObject(new Position((drawPanel.getX()+drawPanel.getWidth()/3)+10, drawPanel.getY()+10), (drawPanel.getWidth()/3)-20, (drawPanel.getWidth()/3)-20));
 
@@ -91,5 +87,4 @@ public class TicTacToe {
 			this.frame.dispose();
 		}
 	}
-
 }

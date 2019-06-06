@@ -2,7 +2,6 @@ package games.basic.position;
 
 import games.basic.position.interfaces.Positionable;
 
-
 public class Position implements Positionable {
 
 	// Attribute
@@ -68,7 +67,6 @@ public class Position implements Positionable {
 		// Skalierung nur in y-Richtung
 		setY( getY() * factor );
 	}
-
 
 	@Override
 	public String toString() {

@@ -25,6 +25,7 @@ public class TicPanel extends JPanel implements MouseListener {
 	JFrame frame;
 	boolean kreis;
 
+
 	public TicPanel(ArrayList<GameObject> liste2) {
 		this.liste = liste2;
 		addMouseListener(this);
@@ -54,6 +55,20 @@ public class TicPanel extends JPanel implements MouseListener {
 		}
 		
 		frame.repaint();
+		
+		if (win()=="kreis") {
+			JOptionPane.showMessageDialog(null, "Glückwunsh! Kreis hat gewonnen!");
+			liste.clear();
+		}
+		
+		if (liste.size()==9) {
+			JOptionPane.showMessageDialog(null, "Niemand hat gewonnen");
+			liste.clear();
+		}
+		
+	
+		
+		
 	}
 	
 	@Override
@@ -77,6 +92,11 @@ public class TicPanel extends JPanel implements MouseListener {
 		
 		//Um die Buttons genrisch zu zeichnen
 		
+		
+	}
+	
+	public String win() {
+		return "";
 		
 	}
 

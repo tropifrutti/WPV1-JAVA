@@ -1,16 +1,19 @@
 package hsnr.fb03.wpv1.classes;
 
 public class ZockerKonto {
-	private int nummer;
+	private String kontoNummer;
 	private double kontoStand;
 	private String inhaber;
-	private static int nextKontoIndex = 498000001;
 	
-	public int getNummer(){
-		return nummer;
+	public String getKontoNummer(){
+		return kontoNummer;
 	}
 
-	public String getInhaber(){
+	public void setKontoNummer(String value){
+		kontoNummer = value;
+	}
+
+	public String getKontoInhaber(){
 		return inhaber;
 	}
 
@@ -21,8 +24,6 @@ public class ZockerKonto {
 	public ZockerKonto(double betrag, String inhaber){
 		this.kontoStand = betrag;
 		this.inhaber = inhaber;
-		this.nummer = ZockerKonto.nextKontoIndex++;
-		System.out.println(String.format("Neu Konto erzeugt:\nKontonummer: %d\nKontoinhaber: %s\nKontozustand: %.2f", this.nummer, this.inhaber, this.kontoStand));
 	}
 
 	public void kontostandAendern(double betrag) throws Exception{
@@ -33,13 +34,12 @@ public class ZockerKonto {
 		if ((kontoStand + betrag) > 0) {
 			kontoStand += betrag;
 			if (betrag > 0) {
-				System.out.println(String.format("%.2f wurde im Konto %d eingezahlt.\nNeu Kontostand: %.2f", betrag, nummer, kontoStand));
+				System.out.println(String.format("%.2f wurde im Konto %s eingezahlt.\n\tNeu Kontostand: %.2f", betrag, kontoNummer, kontoStand));
 			} else {
-				System.out.println(String.format("%.2f wurde vom Konto %d ausgezahlt.\nNeu Kontostand: %.2f", betrag, nummer, kontoStand));
+				System.out.println(String.format("%.2f wurde vom Konto %s ausgezahlt.\n\tNeu Kontostand: %.2f", betrag, kontoNummer, kontoStand));
 			}
 		} else {
-			throw new Exception(String.format("Auszahlung von %.2f ist unmoglich!\nAktuelles Kontostand: %.2f", betrag, kontoStand));
+			throw new Exception(String.format("Auszahlung von %.2f ist unmoglich!\n\tAktuelles Kontostand: %.2f", betrag, kontoStand));
 		}	
 	}
-
 }

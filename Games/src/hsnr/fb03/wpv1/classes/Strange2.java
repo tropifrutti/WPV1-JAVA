@@ -1,11 +1,18 @@
 package hsnr.fb03.wpv1.classes;
 
-public class Strange2 implements Runnable {
+import hsnr.fb03.wpv1.interfaces.IStrange;
 
-	public static void main(String[] args) {
+public class Strange2 implements IStrange, Runnable {
+	public void start() {
 		Runnable r = new Strange2();
 		Thread t = new Thread(r);
 		t.start();
+		try {
+			t.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override

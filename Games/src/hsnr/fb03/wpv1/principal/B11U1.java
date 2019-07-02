@@ -19,11 +19,11 @@ public class B11U1 {
 		bewerberliste.add(student2); 
 
 		// Aufgabe c 
-		String bewerberFile = "students.dat"; 
-		writeStudent(bewerberliste, bewerberFile); 
+		String bewerberFile = "..\\data\\students-1.dat"; 
+		writeText(bewerberliste, bewerberFile); 
 
 		// Aufgabe d 
-		List<Student> studentList = readStudent(bewerberFile); 
+		List<Student> studentList = readText(bewerberFile); 
 		System.out.println("Liste von Students:"); 
 		for (Student student : studentList) { 
 			System.out.println(String.format("\t%s |  %s |  %s", student.getMatrikelnummer(), student.getName(), student.getAnschrift())); 
@@ -31,7 +31,7 @@ public class B11U1 {
 		}
 	}
 
-	private static List<Student> readStudent(String filename){ 
+	private static List<Student> readText(String filename){ 
 		List<Student> students = new ArrayList<Student>(); 
 
 		try { 
@@ -62,7 +62,7 @@ public class B11U1 {
 		return students; 
 	} 
 
-	private static void writeStudent(List<Student> students, String filename){ 
+	private static void writeText(List<Student> students, String filename){ 
 		try { 
 			FileWriter fileStreamWriter = new FileWriter(filename); 
 			BufferedWriter os = new BufferedWriter(fileStreamWriter); 

@@ -1,6 +1,13 @@
 package hsnr.fb03.wpv1.classes;
 
-public class Student {
+import java.io.Serializable;
+
+public class Student implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3153799741864954016L;
+
 	private String name; 
 
 	private String matrikelnummer; 

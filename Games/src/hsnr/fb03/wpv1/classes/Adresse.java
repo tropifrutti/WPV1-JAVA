@@ -1,7 +1,14 @@
 package hsnr.fb03.wpv1.classes;
 
-public class Adresse { 
+import java.io.Serializable;
+
+public class Adresse implements Serializable { 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5310054973945468644L;
+
 	public int PLZ; 
  
 	public String Ort; 

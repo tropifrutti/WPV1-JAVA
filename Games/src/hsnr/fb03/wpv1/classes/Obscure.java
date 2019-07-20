@@ -1,6 +1,6 @@
 package hsnr.fb03.wpv1.classes;
 
-class Obscure{
+public class Obscure{
 	public static void main(String args[]){
 		main main = new main();
 		main.main(1, 0, null);

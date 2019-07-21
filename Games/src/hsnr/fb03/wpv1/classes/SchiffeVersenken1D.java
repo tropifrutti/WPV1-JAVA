@@ -8,7 +8,7 @@ public class SchiffeVersenken1D implements ISchiffeVersenken {
 
 	@Override
 	public int eingabeTipp() {
-		System.out.print("Geben Sie eine Zahl ein: ");
+		System.out.print("Raten Sie die Position des Schiifes ein: ");
 		Scanner scanner = new Scanner(System.in);
 		int eingabe = scanner.nextInt();
 		//scanner.close();

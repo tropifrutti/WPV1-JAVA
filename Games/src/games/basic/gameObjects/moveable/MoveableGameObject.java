@@ -7,8 +7,8 @@ import games.basic.position.interfaces.Positionable;
 
 public class MoveableGameObject extends AbstractMoveableGameObject {
 
-	private int width;
-	private int height;
+	protected int width;
+	protected int height;
 	
 	// Konstruktor
 	// Beachte: Parameter Positionable 'deltaPos' fehlte im Aufgabenblatt

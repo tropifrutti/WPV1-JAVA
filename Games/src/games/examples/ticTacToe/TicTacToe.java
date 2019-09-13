@@ -23,9 +23,6 @@ import games.basic.position.Position;
 
 public class TicTacToe {
 	
-	
-		
-
 	public static void main(String[] args) {
 		
 		ArrayList<GameObject> liste = new ArrayList<GameObject>();
@@ -39,57 +36,33 @@ public class TicTacToe {
 		TicPanel drawPanel = new TicPanel(liste, frame);
 		drawPanel.setLayout(new BoxLayout(drawPanel, BoxLayout.Y_AXIS));
 		
-		
-		//frame.setLayout(new FlowLayout());
 		drawPanel.setPreferredSize(new Dimension(400, 400));
 		
-		frame.add(BorderLayout.PAGE_START, drawPanel);
+		frame.add(BorderLayout.NORTH, drawPanel);
 		
 		JPanel buttonPanel = new JPanel();
-		buttonPanel.setLayout(new FlowLayout());
+		//buttonPanel.setLayout(new FlowLayout()); //Default für JPanel ist schon FlowLayout
 		
 		JButton button1 = new JButton("Neues Spiel");
-		button1.addActionListener(obj.new Button1Listener(frame, liste));
+		button1.addActionListener(event -> {
+				liste.clear();
+				frame.repaint();
+			}
+		);
 		buttonPanel.add(button1);
 		
 		JButton button2 = new JButton("Ende");
-		button2.addActionListener(obj.new Button2Listener(frame));
+		button2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+				frame.dispose();
+			}
+		});
 		buttonPanel.add(button2);
 		
 		frame.add(buttonPanel);
 		
 		frame.setSize(420, 480);
 		frame.setVisible(true);
-		
-		
-		//liste.add(new CircularGameObject(new Position((drawPanel.getX()+drawPanel.getWidth()*2/3)+10, drawPanel.getY()+10), (drawPanel.getWidth()/3)-20));
-		//liste.add(new CrossGameObject(new Position((drawPanel.getX()+drawPanel.getWidth()/3)+10, drawPanel.getY()+10), (drawPanel.getWidth()/3)-20, (drawPanel.getWidth()/3)-20));
-
-		//frame.repaint();
-
 	}
 	
-	class Button1Listener implements ActionListener {
-		ArrayList<GameObject> liste;
-		JFrame frame;
-		public Button1Listener (JFrame frame, ArrayList<GameObject> liste) {
-			this.liste = liste;
-			this.frame = frame;
-		}
-		public void actionPerformed(ActionEvent event) {
-			this.liste.clear();
-			this.frame.repaint();
-		}
-	}
-	
-	class Button2Listener implements ActionListener {
-		JFrame frame;
-		public Button2Listener(JFrame frame) {
-			this.frame = frame;
-		}
-		public void actionPerformed(ActionEvent event) {
-			this.frame.dispose();
-		}
-	}
-
 }

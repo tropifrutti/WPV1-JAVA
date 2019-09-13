@@ -24,15 +24,15 @@ public class TicPanel extends JPanel implements MouseListener {
 
 	private static final long serialVersionUID = 1L;
 	
-	ArrayList<GameObject> liste;
-	JFrame frame;
-	boolean kreis;
+	ArrayList<GameObject> liste;	//Verweis auf die liste mit GameObjects
+	JFrame frame;					//Verweis auf JFrame
+	boolean kreis;					//boolean um sich zu merken wer gerade am Zug ist, Kreuz oder Kreis
 	
-	Map<String, String> cells;
+	Map<String, String> cells;		//Internes Map um Spielstand zu merken und damit zu arbeiten
 
 	public TicPanel(ArrayList<GameObject> liste2) {
 		this.liste = liste2;
-		addMouseListener(this);
+		this.addMouseListener(this);
 		this.kreis = false;
 		this.cells = new HashMap<String, String>();
 		
@@ -41,7 +41,7 @@ public class TicPanel extends JPanel implements MouseListener {
 	public TicPanel(ArrayList<GameObject> liste, JFrame frame) {
 		this.liste = liste;
 		this.frame = frame;
-		addMouseListener(this);
+		this.addMouseListener(this);
 		this.kreis = false;
 		this.cells = new HashMap<String, String>();
 

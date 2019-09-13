@@ -14,7 +14,7 @@ public abstract class AbstractGameObject implements GameObject {
 		int myRightmostPos = this.getPos().getX() + this.getWidth();
 		return (myRightmostPos < other.getPos().getX());
 	}
-
+	
 	@Override
 	public boolean isRightOf(GameObject other) {
 		if (other == null)
@@ -101,6 +101,20 @@ public abstract class AbstractGameObject implements GameObject {
 		this.pos.setY( y );
 	}
 	
+	public boolean touchesX(int x) {
+		int myRightmostPos = this.getPos().getX() + this.getWidth();
+		if (this.getPos().getX() <= x && myRightmostPos >= x) 
+			return true;
+		return false;
+	}
+	
+	public boolean touchesY(int y) {
+		int myLowestPos = this.getPos().getY() + this.getHeight();
+		if (this.getPos().getY() <= y && myLowestPos >= y) 
+			return true;
+		return false;
+	}
+
 	
 	// noch abstract: getHeight(), getWidth()
 
